@@ -80,26 +80,32 @@ void Menu() {
 }
 
 int main() {
-   
+    // TODO:  Write your code here.  You should have lots of functions.
     set<Question> Q;
     set<Person> p;
-    vector <Question> questions_asked;
+    vector <Question> questions_asked;// to hold the question asked
     Question q;
-    vector<map<Question, int>> people_answers;
-    vector< map<char, int>> people_score;
+    vector<map<Question, int>> people_answers;// to hold each person answers
+    vector< map<char, int>> people_score;// to hold people score
     map<char, int> Scores;
     map<Question, int > answers;
     map<char, double> normal;
     vector<map<char, double>> norm;
     int questions;
     int user_answers;
-    int people;
+    int people = 0;
     int num_questions;
+    string Person1, Person2;
+    vector<string> person;
     cout << "Welcome to the Personality Quiz!" << endl << endl;
     cout << "Choose number of questions: ";
     cin >> questions;
-    cout << "Number of people: ";
-    cin >> people;
+    cout << "Name of the first person: ";
+    cin >> Person1;
+    cout << "Name of the second person: ";
+    cin >> Person2;
+    person.push_back(Person1);
+    person.push_back(Person2);
     Read_Question(Q);
     num_questions = questions;
     // Stores the questions in a set so that the same question can be asked to everyone
@@ -108,39 +114,36 @@ int main() {
         questions_asked.push_back(q);
         num_questions--;
     }
-    while (people > 0) {
-        while (questions > 0) {
-            for (auto e : questions_asked) {
-                char c = '"';
-                cout << endl << "How much do you agree with this statement?";
-                cout << endl << c << e.questionText << c << endl << endl;
-                Menu();
-                cin >> user_answers;
-                answers.emplace(e, user_answers);
+    while (people < 2) {
+        int i = 0;
+        cout << endl << person[people] << " answer the question " << endl;
+        // asking the question to each person
+        for (auto e : questions_asked) {
+            char c = '"';
+            cout << "How much do you agree with this statement?";
+            cout << endl << c << e.questionText << c << endl << endl;
+            Menu();
+            cin >> user_answers;
+            answers.emplace(e, user_answers);
+            i++;
+            if (i == questions)
+            {
+                break;
             }
-            questions--;
         }
-        // saves each person answers
+        //saving their answers
         people_answers.push_back(answers);
-        people--;
+        people++;
     }
-    cout << endl;
     //compute the score for each person
     for (auto e : people_answers) {
         Scores = scoresFrom(e);
-        people_score.push_back(Scores);
+        norm.push_back(normalize(Scores));
     }
-    // normalize each person score
-    for (auto e : people_score)
-    {
-        normal = normalize(e);
-        norm.push_back(normal);
-    }
-
-    double number; 
+    int number; 
     int i = 0;
-    number = cosineSimilarityOf(norm[i], norm[i + 1]);
-    cout << number;
+    number = (int)cosineSimilarityOf(norm[i], norm[i + 1])*100;
+    cout << person[0] << " is " << number << "% compatible with " << person[1];
     return 0;
 }
 
