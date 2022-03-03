@@ -80,7 +80,7 @@ void Menu() {
 }
 
 int main() {
-    // TODO:  Write your code here.  You should have lots of functions.
+   
     set<Question> Q;
     set<Person> p;
     vector <Question> questions_asked;
@@ -141,11 +141,6 @@ int main() {
     int i = 0;
     number = cosineSimilarityOf(norm[i], norm[i + 1]);
     cout << number;
-
-
-
-
-
     return 0;
 }
 
