@@ -1,7 +1,3 @@
-// TODO(Ayokunle Olugboyo):  This file contains the
-// the code for the user interface.
-// UIN: aolug2
-// Project: MatchMaker.
 
 #include "driver.h"
 #include <fstream>
