@@ -1,8 +1,3 @@
-// TODO(Ayokunle Olugboyo):  This Header files contains
-// the implementation of most of the functions used in main.cpp
-// UIN: aolug2
-// Project: Personality Test
-
 
 #include <math.h>
 #include <limits>
