@@ -2,7 +2,6 @@
 //  myrandom.h
 //  RandomWriter
 //
-//  Created by Shanon Reckinger.
 //  Copyright © 2020 Shanon Reckinger. All rights reserved.
 //
 #pragma once
