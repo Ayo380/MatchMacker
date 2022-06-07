@@ -2,7 +2,6 @@
 //  myrandom.h
 //  RandomWriter
 //
-//  Copyright © 2020 Shanon Reckinger. All rights reserved.
 //
 #pragma once
 
@@ -13,7 +12,7 @@
 
 using namespace std;
 
-bool useAutograder = false;
+bool useAuto = false;
 int seed = 15;
 /*
  * Function: randomInteger
@@ -25,7 +24,7 @@ int seed = 15;
 int randomInteger(int low, int high) {
     static bool initialized = false;
     if (!initialized) {
-        if (useAutograder) {
+        if (useAuto) {
             srand(seed);
             rand();
         } else {
